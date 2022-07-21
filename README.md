@@ -1,2 +1,2 @@
 # curso-dart
- Códigos que usei criei enquanto eu aprendia dart
+ Esses repositório foi feito enquanto eu estudo dart com o Jacob do Flutterando.
