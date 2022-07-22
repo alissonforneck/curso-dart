@@ -1,26 +1,44 @@
 import 'dart:io';
 
 void main(List<String> args) {
- final String getNome =  pegarNome();
- print('$getNome');
- final double getPeso = pegarPeso();
+  final String getNome = pegarNome();
+  final double getPeso = pegarPeso();
+  final double getAltura = pegarAltura();
+  final double imc = calcularIMC(altura: getAltura, peso: getPeso);
+  print('Nome: $getNome\nPeso: $getPeso\nAltura: $getAltura\nIMC: $imc');
 }
 
-String pegarNome(){
+String pegarNome() {
   print('Digite seu nome');
-  String? nome = stdin.readLineSync();
-  if(nome == null){
-    nome = 'Anônimo';
+  final String? nome = stdin.readLineSync();
+  if (nome == null) {
+    return 'Anônimo';
+  } else {
+    return nome;
   }
-  return nome;
 }
-pegarPeso(){
-  print('Digite seu peso')
+
+double pegarPeso() {
+  print('Digite seu peso');
   final String? stringPeso = stdin.readLineSync();
-  double peso = 0;
-  if (stringPeso != null){
-   peso = double.parse(stringPeso!);
+  if (stringPeso == null) {
+    return 0.0;
+  } else {
+    return double.parse(stringPeso);
   }
-  return peso;
-  
+}
+
+double pegarAltura() {
+  print('Digite sua altura');
+  final String? stringAltura = stdin.readLineSync();
+  if (stringAltura == null) {
+    return 0.0;
+  } else {
+    return double.parse(stringAltura);
+  }
+}
+
+double calcularIMC({required double altura, required double peso}) {
+  final double resultado = peso / (altura * altura);
+  return resultado;
 }
